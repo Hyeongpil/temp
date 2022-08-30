@@ -1,7 +1,13 @@
 <template>
-  <div>인덱스</div>
+  <div>
+    <SectionIntro />
+    <SectionMain />
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import SectionIntro from "~~/components/main/SectionIntro.vue";
+import SectionMain from "../components/main/SectionMain.vue";
+</script>
 
 <style lang="scss" scoped></style>
