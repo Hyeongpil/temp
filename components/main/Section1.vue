@@ -1,5 +1,5 @@
 <template>
-  <div class="main-section1-container">
+  <section class="main-section1-container">
     <div class="item-wrapper">
       <div class="title-wrapper">
         <span>언제 어디서나</span>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts"></script>
@@ -35,6 +35,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  overflow: hidden;
   .item-wrapper {
     display: flex;
     flex-direction: column;
@@ -61,7 +62,7 @@
         widows: 100%;
         height: 280px;
 
-        background: #b3272e;
+        background: #ff9c00;
         border-radius: 20px;
 
         @include xs_sm {
@@ -92,7 +93,7 @@
         font-size: 179px;
         line-height: 140px;
         letter-spacing: 0.11em;
-        color: #b3272e;
+        color: #ff9c00;
         @include xs_sm {
           font-size: 89px;
           line-height: 89px;

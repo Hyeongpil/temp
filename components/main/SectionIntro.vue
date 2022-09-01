@@ -1,5 +1,5 @@
 <template>
-  <div class="main-section1-container">
+  <section class="intro-container">
     <div class="main-img-wrapper">
       <img class="main-label" src="/img/main_label.png" />
       <img class="main-img" src="/img/main_top_img.png" />
@@ -14,17 +14,18 @@
       <span>Scroll Down</span>
       <img src="/img/arrow-down.png" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped lang="scss">
-.main-section1-container {
+.intro-container {
   position: relative;
   width: 100%;
   height: 980px;
   background-color: #b3272e;
+  overflow: hidden;
 
   .main-img-wrapper {
     max-width: 980px;
