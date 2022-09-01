@@ -3,8 +3,9 @@
     <div class="download-wrapper">
       <span class="download-num">4,000,000 +</span>
       <span class="download-text">게임 누적 다운로드 수</span>
-
-      <div class="cha-box-wrapper">
+    </div>
+    <div class="cha-box-wrapper">
+      <div class="cha-pad">
         <cha-box
           class="cha-1"
           :color="'#FFA901'"
@@ -38,7 +39,8 @@ import ChaBox from "@/components/box/ChaBox.vue";
 <style scoped lang="scss">
 .main-section3-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   height: 3200px;
   overflow: hidden;
 
@@ -78,10 +80,18 @@ import ChaBox from "@/components/box/ChaBox.vue";
   }
 
   .cha-box-wrapper {
-    display: flex;
-    flex-direction: column;
     margin-top: 86px;
-    gap: 50px;
+
+    .cha-pad {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      @include xs_sm {
+        gap: 30px;
+        padding: 0 20px;
+      }
+    }
 
     @include xs_sm {
       width: 100%;
@@ -90,13 +100,13 @@ import ChaBox from "@/components/box/ChaBox.vue";
 
     .cha-1,
     .cha-3 {
-      margin-right: 700px;
+      margin-right: 600px;
       @include xs_sm {
         margin-right: 0px;
       }
     }
     .cha-2 {
-      margin-left: 700px;
+      margin-left: 600px;
       @include xs_sm {
         margin-left: 0px;
       }
