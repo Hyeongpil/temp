@@ -5,10 +5,9 @@ module.exports = {
     node: true,
   },
   extends: [
-    "prettier",
     "@nuxtjs/eslint-config-typescript",
-    "plugin:prettier/recommended",
     "plugin:nuxt/recommended",
+    "plugin:prettier/recommended",
   ],
   parserOptions: {
     ecmaVersion: 2020,

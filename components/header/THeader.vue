@@ -6,9 +6,9 @@
     </div>
     <div v-if="!isXs" class="menu-wrapper">
       <span
-        class="menu"
         v-for="menu in menus"
         :key="menu.label"
+        class="menu"
         @click="handleMenu(menu.routeName)"
         >{{ menu.label }}</span
       >
@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import { useWindowSize } from "@vueuse/core";
 import { useBrowserResize } from "~~/composable/useBrowserResize";
 interface menu {
   label: string;
