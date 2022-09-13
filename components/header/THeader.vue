@@ -1,66 +1,84 @@
 <template>
-  <header class="header-container">
-    <div class="logo-wrapper">
-      <img class="logo" src="/img/logo.png" />
-      <span class="title">TENTEN</span>
-    </div>
-    <div v-if="!isXs" class="menu-wrapper">
+  <header class="header-container" :style="{background: headerColor}">
+    <div class="header-pad-wrapper">
+      <div class="logo-wrapper" @click="handleMenu('/')">
+        <img class="logo" src="/img/logo.png" />
+        <span :style="{color: textColor}" class="title">TENTEN</span>
+      </div>
+      <div v-if="!isXs" class="menu-wrapper">
       <span
-        v-for="menu in menus"
-        :key="menu.label"
-        class="menu"
-        @click="handleMenu(menu.routeName)"
-        >{{ menu.label }}</span
+          v-for="menu in menus"
+          :key="menu.label"
+          class="menu"
+          :style="{color: textColor}"
+          @click="handleMenu(menu.routeName)"
+      >{{ menu.label }}</span
       >
+      </div>
+      <img v-else src="/img/menu.png" />
     </div>
-    <img v-else src="/img/menu.png" />
+
   </header>
 </template>
 
 <script setup lang="ts">
 import { useBrowserResize } from "~~/composable/useBrowserResize";
+import {useRoute, useRouter} from "vue-router";
+import {ref} from "@vue/reactivity";
+import {routeNames} from "~/constants/router.constant";
+import {computed} from "vue";
+
 interface menu {
   label: string;
   routeName: string;
 }
 
 const { isXs } = useBrowserResize();
+const router= useRouter()
+const route = useRoute()
+const headerColor = computed(()=>route.name === routeNames.MAIN ? "#111111": "#ffffff")
+const textColor = computed(()=>route.name === routeNames.MAIN ? "#ffffff": "#111111")
 
 const menus = ref<menu[]>([
   {
     label: "새소식",
-    routeName: "notice",
+    routeName: "/content/notice",
   },
   {
     label: "콘텐츠",
-    routeName: "contents",
+    routeName: "/content",
   },
   {
     label: "게임소개",
-    routeName: "games",
+    routeName: "/content/games",
   },
 ]);
 
 function handleMenu(routeName: string) {
-  console.log("메뉴클릭 :", routeName);
+  router.push(routeName)
 }
 </script>
 
 <style scoped lang="scss">
 .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
+  width: 100%;
   position: sticky;
   top: 0;
-  padding: 0 60px;
   background: #111111;
   z-index: 100;
+
+  .header-pad-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 60px;
+  }
 
   .logo-wrapper {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .logo {
       width: 49.5px;
