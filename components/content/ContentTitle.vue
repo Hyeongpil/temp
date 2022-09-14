@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useRoute } from "vue-router";
 import { routeNames } from "~/constants/router.constant";
 import { computed, ref, watch } from "vue";
@@ -70,7 +70,7 @@ watch(
 );
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .content-title-container {
   display: flex;
   justify-content: space-between;
@@ -78,6 +78,7 @@ watch(
   width: 100%;
   height: 200px;
   position: relative;
+  overflow: hidden;
 
   @include xs_sm {
     height: 220px;
@@ -90,6 +91,7 @@ watch(
     display: flex;
     flex-direction: row;
     align-items: center;
+    z-index: 100;
 
     @include xs_sm {
       z-index: 100;
@@ -153,6 +155,9 @@ watch(
     right: 0;
 
     transform: translate(0, -50%);
+    @include xs_sm {
+      right: auto;
+    }
     span {
       font-weight: 900;
       font-size: 140px;

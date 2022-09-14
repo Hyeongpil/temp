@@ -1,32 +1,31 @@
 <template>
-  <header class="header-container" :style="{background: headerColor}">
+  <header :style="{ background: headerColor }" class="header-container">
     <div class="header-pad-wrapper">
       <div class="logo-wrapper" @click="handleMenu('/')">
         <img class="logo" src="/img/logo.png" />
-        <span :style="{color: textColor}" class="title">TENTEN</span>
+        <span :style="{ color: textColor }" class="title">TENTEN</span>
       </div>
       <div v-if="!isXs" class="menu-wrapper">
-      <span
+        <span
           v-for="menu in menus"
           :key="menu.label"
+          :style="{ color: textColor }"
           class="menu"
-          :style="{color: textColor}"
           @click="handleMenu(menu.routeName)"
-      >{{ menu.label }}</span
-      >
+          >{{ menu.label }}</span
+        >
       </div>
       <img v-else src="/img/menu.png" />
     </div>
-
   </header>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useBrowserResize } from "~~/composable/useBrowserResize";
-import {useRoute, useRouter} from "vue-router";
-import {ref} from "@vue/reactivity";
-import {routeNames} from "~/constants/router.constant";
-import {computed} from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { ref } from "@vue/reactivity";
+import { routeNames } from "~/constants/router.constant";
+import { computed } from "vue";
 
 interface menu {
   label: string;
@@ -34,10 +33,14 @@ interface menu {
 }
 
 const { isXs } = useBrowserResize();
-const router= useRouter()
-const route = useRoute()
-const headerColor = computed(()=>route.name === routeNames.MAIN ? "#111111": "#ffffff")
-const textColor = computed(()=>route.name === routeNames.MAIN ? "#ffffff": "#111111")
+const router = useRouter();
+const route = useRoute();
+const headerColor = computed(() =>
+  route.name === routeNames.MAIN ? "#111111" : "#ffffff"
+);
+const textColor = computed(() =>
+  route.name === routeNames.MAIN ? "#ffffff" : "#111111"
+);
 
 const menus = ref<menu[]>([
   {
@@ -55,24 +58,28 @@ const menus = ref<menu[]>([
 ]);
 
 function handleMenu(routeName: string) {
-  router.push(routeName)
+  router.push(routeName);
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .header-container {
   width: 100%;
   position: sticky;
   top: 0;
   background: #111111;
-  z-index: 100;
+  z-index: 200;
 
-  .header-pad-wrapper{
+  .header-pad-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100px;
     padding: 0 60px;
+
+    @include xs_sm {
+      padding: 0 20px;
+    }
   }
 
   .logo-wrapper {

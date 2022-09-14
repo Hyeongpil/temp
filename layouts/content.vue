@@ -2,18 +2,20 @@
   <div class="content-layout">
     <t-header />
     <div class="content-layout-wrapper">
-      <content-title />
-      <slot />
+      <div class="content-layout-pad">
+        <content-title />
+        <slot />
+      </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import THeader from "~/components/header/THeader";
 import ContentTitle from "~/components/content/ContentTitle.vue";
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .content-layout {
   display: flex;
   flex-direction: column;
@@ -21,6 +23,13 @@ import ContentTitle from "~/components/content/ContentTitle.vue";
   .content-layout-wrapper {
     max-width: 1200px;
     width: 100%;
+
+    .content-layout-pad {
+      padding: 0 40px;
+      @include xs_sm {
+        padding: 0 20px;
+      }
+    }
   }
 }
 </style>

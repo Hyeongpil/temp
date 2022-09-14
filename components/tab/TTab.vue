@@ -1,0 +1,74 @@
+<template>
+  <div class="tab-container">
+    <div class="tab-wrapper">
+      <div
+        v-for="tab in tabs"
+        :key="tab"
+        class="tab-item"
+        @click="selectedTab = tab"
+      >
+        <span :class="['title', { selected: selectedTab === tab }]">{{
+          tab
+        }}</span>
+      </div>
+    </div>
+    <div class="divider" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { defineProps } from "@vue/runtime-core";
+import { ref } from "@vue/reactivity";
+import { watch } from "vue";
+
+export interface tabProps {
+  tabs: string[];
+}
+const props = defineProps<tabProps>();
+const emit = defineEmits(["change"]);
+const selectedTab = ref(props.tabs[0]);
+
+watch(selectedTab, () => emit("change", selectedTab));
+</script>
+
+<style lang="scss" scoped>
+.tab-container {
+  display: flex;
+  flex-direction: column;
+
+  .tab-wrapper {
+    display: flex;
+
+    .tab-item:not(:first-child) {
+      margin-left: 40px;
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+
+      .selected.title {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 21px;
+
+        color: #111111;
+        border-bottom: 5px solid;
+        padding-bottom: 10px;
+      }
+
+      .title {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        color: #777777;
+      }
+    }
+  }
+
+  .divider {
+    border-top: 1px solid #dddddd;
+  }
+}
+</style>
