@@ -5,7 +5,12 @@
       <div class="content-layout-pad">
         <content-title />
 
-        <t-tab v-if="tabs.length > 0" :tabs="tabs" @change="handleTab" />
+        <t-tab
+          v-if="tabs.length > 0"
+          :tabs="tabs"
+          class="tab"
+          @change="handleTab"
+        />
         <slot />
       </div>
     </div>
@@ -66,6 +71,12 @@ watch(
       padding: 0 40px;
       @include xs_sm {
         padding: 0 20px;
+      }
+
+      .tab {
+        @include xs_sm {
+          margin-top: 50px;
+        }
       }
     }
   }

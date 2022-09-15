@@ -57,18 +57,23 @@ watch(
 
     .tab-item:not(:first-child) {
       margin-left: 40px;
+      @include xs_sm {
+        margin-left: 30px;
+      }
     }
 
     .tab-item {
       display: flex;
       flex-direction: column;
       cursor: pointer;
-
+      font-size: 18px;
+      line-height: 21px;
+      @include xs_sm {
+        font-size: 16px;
+        line-height: 19px;
+      }
       .selected.title {
         font-weight: 800;
-        font-size: 18px;
-        line-height: 21px;
-
         color: #111111;
         border-bottom: 5px solid;
         padding-bottom: 10px;
@@ -76,8 +81,6 @@ watch(
 
       .title {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 21px;
         color: #777777;
       }
     }

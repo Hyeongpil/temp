@@ -27,6 +27,8 @@
   display: flex;
 
   @include xs_sm {
+    display: flex;
+    justify-content: center;
     height: 280px;
   }
 
@@ -48,6 +50,7 @@
     flex-wrap: wrap;
 
     @include xs_sm {
+      flex-direction: column;
       justify-content: center;
     }
 

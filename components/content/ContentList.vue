@@ -85,7 +85,7 @@ function handleContentClick(id: string) {
 
   .content-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
     grid-gap: 40px 20px;
     gap: 40px 20px;
     flex-wrap: wrap;
