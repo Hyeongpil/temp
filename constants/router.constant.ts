@@ -1,6 +1,9 @@
 export const routeNames = {
   MAIN: "index",
-  NOTICE: "content-notice",
+  NOTICE: "notice",
   CONTENT: "content",
-  GAMES: "content-games",
+  CONTENT_DETAIL: "content-detail-id",
+  SCREENSHOT: "content-screenshot",
+  MEDIA: "content-media",
+  GAMES: "games",
 };

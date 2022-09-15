@@ -20,6 +20,7 @@ defineProps<contentItemProps>();
 .content-item-container {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 
   .img {
     width: 100%;

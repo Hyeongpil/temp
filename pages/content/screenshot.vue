@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container">
+  <div class="screenshot-container">
     <content-list />
   </div>
 </template>
@@ -14,7 +14,7 @@ definePageMeta({
 </script>
 
 <style lang="scss" scoped>
-.content-container {
+.screenshot-container {
   @include xs_sm {
     margin-top: 50px;
   }

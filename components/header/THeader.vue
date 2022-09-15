@@ -21,11 +21,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useBrowserResize } from "~~/composable/useBrowserResize";
 import { useRoute, useRouter } from "vue-router";
 import { ref } from "@vue/reactivity";
-import { routeNames } from "~/constants/router.constant";
 import { computed } from "vue";
+import { routeNames } from "~/constants/router.constant";
+import { useBrowserResize } from "~/composable/useBrowserResize";
 
 interface menu {
   label: string;
@@ -45,15 +45,15 @@ const textColor = computed(() =>
 const menus = ref<menu[]>([
   {
     label: "새소식",
-    routeName: "/content/notice",
+    routeName: routeNames.NOTICE,
   },
   {
     label: "콘텐츠",
-    routeName: "/content",
+    routeName: routeNames.CONTENT,
   },
   {
     label: "게임소개",
-    routeName: "/content/games",
+    routeName: routeNames.GAMES,
   },
 ]);
 

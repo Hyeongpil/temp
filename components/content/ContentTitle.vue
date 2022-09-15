@@ -17,12 +17,13 @@
 
 <script lang="ts" setup>
 import { useRoute } from "vue-router";
-import { routeNames } from "~/constants/router.constant";
 import { computed, ref, watch } from "vue";
+import { routeNames } from "~/constants/router.constant";
 
 const route = useRoute();
 const routeName = ref(route.name);
-const { GAMES, NOTICE, CONTENT } = routeNames;
+const { GAMES, NOTICE, CONTENT, SCREENSHOT, MEDIA, CONTENT_DETAIL } =
+  routeNames;
 const getTitle = computed(() => {
   switch (routeName.value) {
     case NOTICE:
@@ -30,6 +31,9 @@ const getTitle = computed(() => {
     case GAMES:
       return "게임소개";
     case CONTENT:
+    case SCREENSHOT:
+    case MEDIA:
+    case CONTENT_DETAIL:
       return "컨텐츠";
     default:
       return "";
@@ -43,6 +47,9 @@ const getDesc = computed(() => {
     case GAMES:
       return "텐텐의 32가지 풍성한 게임을 소개합니다.";
     case CONTENT:
+    case SCREENSHOT:
+    case MEDIA:
+    case CONTENT_DETAIL:
       return "스크린샷, 영상으로 당신의 10초를 공유해주세요";
     default:
       return "";
@@ -56,6 +63,9 @@ const getOverlay = computed(() => {
     case GAMES:
       return "TENTEN";
     case CONTENT:
+    case SCREENSHOT:
+    case MEDIA:
+    case CONTENT_DETAIL:
       return "CONTENTS";
     default:
       return "";

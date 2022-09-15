@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    "prettier",
+    "@nuxtjs/eslint-config-typescript",
     "plugin:nuxt/recommended",
     "plugin:prettier/recommended",
   ],
@@ -21,5 +21,6 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "@typescript-eslint/no-unused-vars": "off",
   },
 };

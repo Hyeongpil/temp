@@ -3,13 +3,14 @@
     <div class="tab-wrapper">
       <div
         v-for="tab in tabs"
-        :key="tab"
+        :key="tab.label"
         class="tab-item"
         @click="selectedTab = tab"
       >
-        <span :class="['title', { selected: selectedTab === tab }]">{{
-          tab
-        }}</span>
+        <span
+          :class="['title', { selected: selectedTab.label === tab.label }]"
+          >{{ tab.label }}</span
+        >
       </div>
     </div>
     <div class="divider" />
@@ -20,15 +21,30 @@
 import { defineProps } from "@vue/runtime-core";
 import { ref } from "@vue/reactivity";
 import { watch } from "vue";
+import { useRoute } from "vue-router";
+
+export interface tab {
+  label: string;
+  routeName: string;
+}
 
 export interface tabProps {
-  tabs: string[];
+  tabs: tab[];
 }
 const props = defineProps<tabProps>();
 const emit = defineEmits(["change"]);
+const route = useRoute();
+// const nowTab =
+
 const selectedTab = ref(props.tabs[0]);
 
-watch(selectedTab, () => emit("change", selectedTab));
+watch(
+  () => selectedTab.value.label,
+  () => emit("change", selectedTab.value),
+  {
+    deep: true,
+  }
+);
 </script>
 
 <style lang="scss" scoped>
