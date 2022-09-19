@@ -22,11 +22,23 @@ import { routeNames } from "~/constants/router.constant";
 
 const route = useRoute();
 const routeName = ref(route.name);
-const { GAMES, NOTICE, CONTENT, SCREENSHOT, MEDIA, CONTENT_DETAIL } =
-  routeNames;
+const {
+  GAMES,
+  NEWS,
+  NEWS_EVENT,
+  NEWS_UPDATE,
+  NEWS_NOTICE,
+  CONTENT,
+  SCREENSHOT,
+  MEDIA,
+  CONTENT_DETAIL,
+} = routeNames;
 const getTitle = computed(() => {
   switch (routeName.value) {
-    case NOTICE:
+    case NEWS:
+    case NEWS_EVENT:
+    case NEWS_UPDATE:
+    case NEWS_NOTICE:
       return "새소식";
     case GAMES:
       return "게임소개";
@@ -42,7 +54,10 @@ const getTitle = computed(() => {
 
 const getDesc = computed(() => {
   switch (routeName.value) {
-    case NOTICE:
+    case NEWS:
+    case NEWS_EVENT:
+    case NEWS_UPDATE:
+    case NEWS_NOTICE:
       return "텐텐의 이벤트 및 업데이트 최신 소식을 확인하세요!";
     case GAMES:
       return "텐텐의 32가지 풍성한 게임을 소개합니다.";
@@ -58,7 +73,10 @@ const getDesc = computed(() => {
 
 const getOverlay = computed(() => {
   switch (routeName.value) {
-    case NOTICE:
+    case NEWS:
+    case NEWS_EVENT:
+    case NEWS_UPDATE:
+    case NEWS_NOTICE:
       return "NEWS";
     case GAMES:
       return "TENTEN";

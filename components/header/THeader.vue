@@ -45,7 +45,7 @@ const textColor = computed(() =>
 const menus = ref<menu[]>([
   {
     label: "새소식",
-    routeName: routeNames.NOTICE,
+    routeName: routeNames.NEWS,
   },
   {
     label: "콘텐츠",
@@ -58,7 +58,7 @@ const menus = ref<menu[]>([
 ]);
 
 function handleMenu(routeName: string) {
-  router.push(routeName);
+  router.push({ name: routeName });
 }
 </script>
 

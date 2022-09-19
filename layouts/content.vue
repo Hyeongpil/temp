@@ -27,11 +27,21 @@ import TFooter from "~/components/footer/TFooter.vue";
 import TTab, { tab } from "~/components/tab/TTab.vue";
 import { routeNames } from "~/constants/router.constant";
 import { contentTabs } from "~/components/tab/content.tabs";
+import { newsTabs } from "~/components/tab/news.tabs";
 
 const route = useRoute();
 const router = useRouter();
 const routeName = ref(route.name);
-const { CONTENT, SCREENSHOT, MEDIA, CONTENT_DETAIL } = routeNames;
+const {
+  CONTENT,
+  SCREENSHOT,
+  MEDIA,
+  CONTENT_DETAIL,
+  NEWS,
+  NEWS_EVENT,
+  NEWS_NOTICE,
+  NEWS_UPDATE,
+} = routeNames;
 
 const tabs = computed(() => {
   switch (routeName.value) {
@@ -40,6 +50,11 @@ const tabs = computed(() => {
     case MEDIA:
     case CONTENT_DETAIL:
       return contentTabs;
+    case NEWS:
+    case NEWS_UPDATE:
+    case NEWS_EVENT:
+    case NEWS_NOTICE:
+      return newsTabs;
 
     default:
       return [];

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>새소식</span>
+    <span>이벤트</span>
   </div>
 </template>
 
@@ -10,4 +10,4 @@ definePageMeta({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

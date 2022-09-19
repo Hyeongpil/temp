@@ -1,18 +1,29 @@
 <template>
-  <div :style="{ margin: `${yMargin}px 0` }" class="divider-container" />
+  <div
+    :style="{
+      margin: `${yMargin}px 0`,
+      borderBottom: `${height}px solid ${color}`,
+    }"
+    class="divider-container"
+  />
 </template>
 
 <script lang="ts" setup>
 interface dividerProps {
-  yMargin: number;
+  yMargin?: number;
+  height?: number;
+  color?: string;
 }
 
-defineProps<dividerProps>();
+withDefaults(defineProps<dividerProps>(), {
+  height: 1,
+  yMargin: 0,
+  color: "#dddddd",
+});
 </script>
 
 <style lang="scss" scoped>
 .divider-container {
   height: 0;
-  border-bottom: 1px solid #dddddd;
 }
 </style>
