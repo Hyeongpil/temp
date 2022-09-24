@@ -1,7 +1,7 @@
 <template>
   <header :style="{ background: headerColor }" class="header-container">
     <div class="header-pad-wrapper">
-      <div class="logo-wrapper" @click="handleMenu('/')">
+      <div class="logo-wrapper" @click="handleMenu(routeNames.MAIN)">
         <img class="logo" src="/img/logo.png" />
         <span :style="{ color: textColor }" class="title">TENTEN</span>
       </div>

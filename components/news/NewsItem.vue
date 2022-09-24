@@ -1,5 +1,9 @@
 <template>
-  <div :style="getContainerStyle()" class="news-item-container">
+  <div
+    :style="getContainerStyle()"
+    class="news-item-container"
+    @click="handleItemClick"
+  >
     <span :style="getTxtStyle()" class="category">{{ type }}</span>
     <span :style="getTxtStyle()" class="title">{{ title }}</span>
     <span :style="getTxtStyle()" class="date">{{ date }}</span>
@@ -7,14 +11,19 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from "vue-router";
+import { routeNames } from "~/constants/router.constant";
+
 export interface newsItemProps {
   type: string;
   title: string;
   date: string;
   highlight?: boolean;
+  id?: string;
 }
 
 const props = defineProps<newsItemProps>();
+const router = useRouter();
 
 function getContainerStyle() {
   if (props.highlight)
@@ -29,6 +38,15 @@ function getTxtStyle() {
     return {
       color: "#fff",
     };
+}
+
+function handleItemClick() {
+  router.push({
+    name: routeNames.NEWS_DETAIL,
+    params: {
+      id: props.id,
+    },
+  });
 }
 </script>
 

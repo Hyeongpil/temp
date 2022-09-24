@@ -41,6 +41,7 @@ const {
   NEWS_EVENT,
   NEWS_NOTICE,
   NEWS_UPDATE,
+  NEWS_DETAIL,
 } = routeNames;
 
 const tabs = computed(() => {
@@ -54,6 +55,7 @@ const tabs = computed(() => {
     case NEWS_UPDATE:
     case NEWS_EVENT:
     case NEWS_NOTICE:
+    case NEWS_DETAIL:
       return newsTabs;
 
     default:

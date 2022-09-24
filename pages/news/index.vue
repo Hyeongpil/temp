@@ -3,6 +3,7 @@
     <div class="fixed-wrapper">
       <news-item
         v-for="data in datas"
+        id="123"
         :key="data.title"
         :date="data.date"
         :highlight="true"

@@ -22,7 +22,7 @@
       />
     </div>
     <div class="btn-wrapper">
-      <button @click="handleList">목록</button>
+      <t-button :label="'목록'" @click="handleList" />
     </div>
   </div>
 </template>
@@ -33,6 +33,7 @@ import { definePageMeta } from "#imports";
 import Divider from "~/components/divider/Divider.vue";
 import ContentItem from "~/components/content/ContentItem.vue";
 import { routeNames } from "~/constants/router.constant";
+import TButton from "~/components/button/TButton.vue";
 
 definePageMeta({
   layout: "content",
@@ -68,7 +69,7 @@ function handleContentClick(id: string) {
 
 function handleList() {
   router.push({
-    name: routeNames.CONTENT, // TODO: 컨텐츠 카테고리를 보고 라우팅 변경
+    name: routeNames.CONTENT,
   });
 }
 </script>
@@ -159,15 +160,6 @@ function handleList() {
     display: flex;
     justify-content: center;
     button {
-      cursor: pointer;
-      width: 160px;
-      height: 50px;
-      background: #111111;
-      border-radius: 5px;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 17px;
-      color: #ffffff;
       margin-top: 60px;
     }
   }

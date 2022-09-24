@@ -6,7 +6,7 @@
     </div>
     <div class="bread-wrapper">
       <img class="home" src="/img/icon/home.png" />
-      <img class="arrow" src="/img/icon/right-arrow.png" />
+      <img class="arrow" src="/img/icon/right-sm-arrow.png" />
       <span>{{ getTitle }}</span>
     </div>
     <div class="overlay-wrapper">
@@ -32,6 +32,7 @@ const {
   SCREENSHOT,
   MEDIA,
   CONTENT_DETAIL,
+  NEWS_DETAIL,
 } = routeNames;
 const getTitle = computed(() => {
   switch (routeName.value) {
@@ -39,6 +40,7 @@ const getTitle = computed(() => {
     case NEWS_EVENT:
     case NEWS_UPDATE:
     case NEWS_NOTICE:
+    case NEWS_DETAIL:
       return "새소식";
     case GAMES:
       return "게임소개";
@@ -58,6 +60,7 @@ const getDesc = computed(() => {
     case NEWS_EVENT:
     case NEWS_UPDATE:
     case NEWS_NOTICE:
+    case NEWS_DETAIL:
       return "텐텐의 이벤트 및 업데이트 최신 소식을 확인하세요!";
     case GAMES:
       return "텐텐의 32가지 풍성한 게임을 소개합니다.";
@@ -77,6 +80,7 @@ const getOverlay = computed(() => {
     case NEWS_EVENT:
     case NEWS_UPDATE:
     case NEWS_NOTICE:
+    case NEWS_DETAIL:
       return "NEWS";
     case GAMES:
       return "TENTEN";
