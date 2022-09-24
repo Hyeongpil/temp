@@ -20,5 +20,8 @@ defineProps<TButtonProps>();
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
+  appearance: none;
+  border: 0;
+  outline: 0;
 }
 </style>

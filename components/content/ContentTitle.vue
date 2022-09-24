@@ -113,7 +113,6 @@ watch(
   overflow: hidden;
 
   @include xs_sm {
-    height: 220px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -127,7 +126,7 @@ watch(
 
     @include xs_sm {
       z-index: 100;
-      padding: 0 20px;
+      //padding: 0 20px;
       flex-direction: column;
       align-items: flex-start;
       margin-top: 70px;
@@ -167,12 +166,11 @@ watch(
     color: #111111;
 
     @include xs_sm {
-      padding: 0 20px;
-      margin-top: 50px;
+      //padding: 0 20px;
+      margin-top: 30px;
     }
     .home {
       width: 8px;
-      height: 10.5px;
     }
     .arrow {
       width: 3px;

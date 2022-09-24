@@ -1,21 +1,36 @@
 <template>
   <header :style="{ background: headerColor }" class="header-container">
     <div class="header-pad-wrapper">
-      <div class="logo-wrapper" @click="handleMenu(routeNames.MAIN)">
-        <img class="logo" src="/img/logo.png" />
-        <span :style="{ color: textColor }" class="title">TENTEN</span>
-      </div>
-      <div v-if="!isXs" class="menu-wrapper">
-        <span
-          v-for="menu in menus"
-          :key="menu.label"
-          :style="{ color: textColor }"
-          class="menu"
-          @click="handleMenu(menu.routeName)"
-          >{{ menu.label }}</span
-        >
-      </div>
-      <img v-else src="/img/menu.png" />
+      <t-logo />
+      <client-only>
+        <div v-if="!isXs" class="menu-wrapper">
+          <span
+            v-for="menu in menus"
+            :key="menu.label"
+            :style="{ color: textColor }"
+            class="menu"
+            @click="handleMenu(menu.routeName)"
+            >{{ menu.label }}</span
+          >
+        </div>
+        <template v-else>
+          <img
+            v-if="isMain"
+            alt="menu"
+            class="mob-menu"
+            src="/img/menu.png"
+            @click="isMobMenuShow = true"
+          />
+          <img
+            v-else
+            alt="menu2"
+            class="mob-menu"
+            src="/img/icon/menu-black.png"
+            @click="isMobMenuShow = true"
+          />
+        </template>
+      </client-only>
+      <t-menu v-if="isMobMenuShow" @x-click="isMobMenuShow = false" />
     </div>
   </header>
 </template>
@@ -26,36 +41,17 @@ import { ref } from "@vue/reactivity";
 import { computed } from "vue";
 import { routeNames } from "~/constants/router.constant";
 import { useBrowserResize } from "~/composable/useBrowserResize";
-
-interface menu {
-  label: string;
-  routeName: string;
-}
+import TLogo from "~/components/logo/TLogo.vue";
+import TMenu from "~/components/menu/TMenu.vue";
+import { menus } from "~/constants/menu.constant";
 
 const { isXs } = useBrowserResize();
 const router = useRouter();
 const route = useRoute();
-const headerColor = computed(() =>
-  route.name === routeNames.MAIN ? "#111111" : "#ffffff"
-);
-const textColor = computed(() =>
-  route.name === routeNames.MAIN ? "#ffffff" : "#111111"
-);
-
-const menus = ref<menu[]>([
-  {
-    label: "새소식",
-    routeName: routeNames.NEWS,
-  },
-  {
-    label: "콘텐츠",
-    routeName: routeNames.CONTENT,
-  },
-  {
-    label: "게임소개",
-    routeName: routeNames.GAMES,
-  },
-]);
+const isMobMenuShow = ref(false);
+const isMain = computed(() => route.name === routeNames.MAIN);
+const headerColor = computed(() => (isMain.value ? "#111111" : "#ffffff"));
+const textColor = computed(() => (isMain.value ? "#ffffff" : "#111111"));
 
 function handleMenu(routeName: string) {
   router.push({ name: routeName });
@@ -78,28 +74,11 @@ function handleMenu(routeName: string) {
     padding: 0 60px;
 
     @include xs_sm {
-      padding: 0 20px;
+      height: 50px;
+      padding: 20px;
     }
-  }
-
-  .logo-wrapper {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    .logo {
-      width: 49.5px;
-      height: 33px;
-    }
-
-    .title {
-      font-family: "Jalnan";
-      font-weight: 700;
-      font-size: 22px;
-      line-height: 23px;
-      letter-spacing: -0.01em;
-
-      color: #ffffff;
+    .mob-menu {
+      cursor: pointer;
     }
   }
 
