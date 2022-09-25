@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { definePageMeta } from "#imports";
 import GamesTitleBox from "~/components/games/GamesTitleBox.vue";
-import { activeGames } from "~/models/games.model";
+import { activeGames } from "~/models/games/games.model";
 
 definePageMeta({
   layout: "content",

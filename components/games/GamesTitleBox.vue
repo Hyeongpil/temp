@@ -20,7 +20,7 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import { gamesTitle } from "~/models/games.model";
+import { gamesTitle } from "~/models/games/games.model";
 
 export interface gamesTitleBoxProps {
   titleItem: gamesTitle;

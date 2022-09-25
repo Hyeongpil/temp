@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import { gamesItem } from "~/models/games.model";
+import { gamesItem } from "~/models/games/games.model";
 
 export interface gamesItemProps {
   gamesItem: gamesItem;

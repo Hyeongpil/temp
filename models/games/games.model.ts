@@ -1,4 +1,5 @@
 import { GROUP_TYPE } from "~/constants/games.constant";
+import { activeGameItems } from "~/models/games/items/active-game";
 
 export interface gamesItem {
   iconImageUrl: string;
@@ -33,7 +34,7 @@ export const activeGames: games = {
     title: "액티브 게임",
     logoUrl: "/img/cha-1.png",
   },
-  games: [],
+  games: activeGameItems,
 };
 
 export const randomGames: games = {
