@@ -25,7 +25,7 @@ import { useRoute } from "vue-router";
 
 export interface tab {
   label: string;
-  routeName: string;
+  routeName?: string;
 }
 
 export interface tabProps {
@@ -54,7 +54,10 @@ watch(
 
   .tab-wrapper {
     display: flex;
-
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .tab-item:not(:first-child) {
       margin-left: 40px;
       @include xs_sm {
@@ -68,6 +71,8 @@ watch(
       cursor: pointer;
       font-size: 18px;
       line-height: 21px;
+      flex-shrink: 0;
+
       @include xs_sm {
         font-size: 16px;
         line-height: 19px;

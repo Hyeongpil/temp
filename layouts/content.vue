@@ -28,6 +28,7 @@ import TTab, { tab } from "~/components/tab/TTab.vue";
 import { routeNames } from "~/constants/router.constant";
 import { contentTabs } from "~/components/tab/content.tabs";
 import { newsTabs } from "~/components/tab/news.tabs";
+import { gamesTabs } from "~/components/tab/games.tab";
 
 const route = useRoute();
 const router = useRouter();
@@ -42,6 +43,7 @@ const {
   NEWS_NOTICE,
   NEWS_UPDATE,
   NEWS_DETAIL,
+  GAMES,
 } = routeNames;
 
 const tabs = computed(() => {
@@ -57,7 +59,8 @@ const tabs = computed(() => {
     case NEWS_NOTICE:
     case NEWS_DETAIL:
       return newsTabs;
-
+    case GAMES:
+      return gamesTabs;
     default:
       return [];
   }
